@@ -1,4 +1,9 @@
-p {
-    color: red;
-    
+.subsection,
+.header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.subsection#header {
+    margin-top: 0;
 }
