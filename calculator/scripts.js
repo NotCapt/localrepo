@@ -6,14 +6,20 @@ const btns = document.querySelectorAll('button');
 
 btns.forEach(button => {
     button.addEventListener('click', (event) => {
-        const value = Number(event.target.id)
-        if (Number.isNaN(value)){
+        const value = event.target.id
+        const num = Number(value)
+        if (Number.isNaN(num)){
+            operation = value;
+            console.log(operation);
             return;
         }
-        firstNum = value;
+        firstNum = Number(value);
         console.log(firstNum);
-    })
-})
+        
+
+    });
+});
+
 
 
 
