@@ -79,8 +79,5 @@ function operate(firstNum, secondNum, operation) {
     display.textContent = ans;
     return ans;
 }
-
-
-
-
-
+// to implement: chain operations
+// mind map : double operators fix (5 ++3) --> result variable
