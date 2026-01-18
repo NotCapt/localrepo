@@ -12,6 +12,13 @@
     width: 210px;
     height: 60px;
     margin: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    font-size: 20px;
+    box-sizing: border-box;
+    padding: 5px;
+    color: rgb(26, 21, 26);
 
 }
 
