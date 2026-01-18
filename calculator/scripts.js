@@ -1,6 +1,8 @@
-let firstNum = null;
+let firstNum = 0;
 let operation = null;
-let secondNum = null;
+let secondNum = 0;
+let currentState2 = [];
+let currentState1 = [];
 
 const btns = document.querySelectorAll('button');
 const display = document.querySelector('#display');
@@ -9,8 +11,8 @@ btns.forEach(button => {
     button.addEventListener('click', (event) => {
         const value = event.currentTarget.id
         if (value === 'clear') {
-            firstNum = null;
-            secondNum = null;
+            firstNum = 0;
+            secondNum = 0;
             operation = null;
             display.textContent = '';
             return;
@@ -32,15 +34,23 @@ btns.forEach(button => {
             display.textContent = operation;
             return;
         }
-        if (operation === null) {
-        firstNum = Number(value);
-        display.textContent = firstNum;
-        console.log(`first num: ${firstNum}`);
+
+        //array approach
+        if (operation !== null) {
+            currentState2.push(Number(value));
+            let n = currentState2.length
+            for (let i = n-1; i >= 0; i--){
+                secondNum += currentState2[i] * Math.pow(10, i);
+            }
+            display.textContent = secondNum;
         }
         else {
-            secondNum = Number(value);
-            display.textContent = secondNum;
-            console.log(`second num: ${secondNum}`);
+            currentState1.push(Number(value));
+            let n = currentState1.length
+            for (let i = n-1; i >= 0; i--){
+                firstNum += currentState1[i] * Math.pow(10, i);
+            }     
+            display.textContent = firstNum;     
         }
         
 
