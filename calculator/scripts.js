@@ -1,8 +1,7 @@
 let firstNum = 0;
 let operation = null;
 let secondNum = 0;
-
-
+let isTypingState = false;
 const btns = document.querySelectorAll('button');
 const display = document.querySelector('#display');
 
@@ -22,15 +21,32 @@ btns.forEach(button => {
                 firstNum = result;
                 secondNum = 0;
                 operation = null;
+                isTypingState = false;
+                display.textContent = firstNum;
             }
             return;
         }
 
         const num = Number(value)
         if (Number.isNaN(num)){
+            if(operation === null) {
             operation = value;
             console.log(operation);
             display.textContent = operation;
+            }
+            else if (isTypingState === true ) {
+                operation = value;
+                display.textContent = operation;
+                isTypingState = false;
+            }
+            else {
+                const result = operate(firstNum, secondNum, operation);
+                firstNum = result;
+                secondNum = 0;
+                operation = value;
+                isTypingState = false;
+                display.textContent = firstNum;
+            }
             return;
         }
 
@@ -40,8 +56,14 @@ btns.forEach(button => {
             display.textContent = firstNum;
         }
         else {
-            secondNum = secondNum * 10 + num;
-            display.textContent = secondNum;
+            if (!isTypingState) {
+                secondNum = num;
+                isTypingState = true;
+            }
+            else {
+                secondNum = secondNum * 10 + num;
+            }
+            display.textContent = secondNum;    
         }
 
     });
@@ -76,7 +98,7 @@ function operate(firstNum, secondNum, operation) {
             ans =  divide(firstNum, secondNum);
             break;
     }
-    display.textContent = ans;
+    // display.textContent = ans;
     return ans;
 }
 // to implement: chain operations
