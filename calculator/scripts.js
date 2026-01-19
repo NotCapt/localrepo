@@ -16,7 +16,7 @@ btns.forEach(button => {
             return;
         }
         if (value === '=') {
-            if (firstNum !== 0 && secondNum !== 0 && operation !== null) {
+            if (isTypingState && operation !== null) {
                 const result = operate(firstNum, secondNum, operation);
                 firstNum = result;
                 secondNum = 0;
@@ -30,22 +30,20 @@ btns.forEach(button => {
         const num = Number(value)
         if (Number.isNaN(num)){
             if(operation === null) {
-            operation = value;
-            console.log(operation);
-            display.textContent = operation;
-            }
-            else if (isTypingState === true ) {
                 operation = value;
+                console.log(operation);
                 display.textContent = operation;
-                isTypingState = false;
             }
-            else {
-                const result = operate(firstNum, secondNum, operation);
-                firstNum = result;
+            else if (isTypingState) {
+                firstNum = operate(firstNum, secondNum, operation);
                 secondNum = 0;
                 operation = value;
                 isTypingState = false;
                 display.textContent = firstNum;
+            }
+            else {
+                operation = value;
+                display.textContent = operation;
             }
             return;
         }
@@ -91,7 +89,7 @@ function operate(firstNum, secondNum, operation) {
         case '-':
             ans = subtract(firstNum, secondNum);
             break;
-        case '*':
+        case 'x':
             ans =  multiply(firstNum, secondNum);
             break;
         case '/':

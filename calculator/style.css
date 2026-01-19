@@ -1,28 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
 #container {
     display: flex;
     justify-content: center;
     height: 100vh;
     align-items: center;
-    flex-direction: column; 
-
+    flex-direction: column;
 }
 
 #display {
-    background-color: rgb(125, 125, 137);
-    width: 210px;
-    height: 60px;
-    margin: 5px;
+    background-color: #1a1a2e;
+    width: 280px;
+    height: 80px;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: end;
-    align-items: end;
-    font-size: 20px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 32px;
+    font-weight: bold;
     box-sizing: border-box;
-    padding: 5px;
-    color: rgb(26, 21, 26);
+    padding: 15px;
+    color: #00ff88;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 2px solid #667eea;
+    word-wrap: break-word;
+    text-align: right;
+}
 
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div[id^="row"] {
+    display: flex;
+    gap: 10px;
 }
 
 button {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #2a2a3e;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #3a3a4e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button[id="+"],
+button[id="-"],
+button[id="*"],
+button[id="/"],
+button[id="="] {
+    background-color: #667eea;
+}
+
+
+
+button[id="="] {
+    background-color: #00ff88;
+    color: #1a1a2e;
+}
+
+button[id="clear"] {
+    background-color: #ff6b6b;
+}
+
+button[id="+"],
+button[id="-"],
+button[id="*"],
+button[id="/"],
+button[id="="],
+button[id="clear"] {
+    width: 60px;
 }
